@@ -1,0 +1,24 @@
+[package]
+name = "nourzz_rust_printer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# We pull in only the foundation and printing segments of the Windows API
+windows-sys = { version = "0.61.2", features = [
+  #  "Win32_Graphics_Printing",
+  "Win32_Foundation",
+  "Win32_Storage_Xps",
+  "Win32_Graphics_Gdi",
+] }
+notify = "8.2.0"
+# Lightweight setup for decoding standard image files
+image = "0.25.0"
+
+# Optimizations for the end result
+[profile.release]
+opt-level = "z"   # Optimize strictly for size
+lto = true        # Enable Link-Time Optimization across all crates
+codegen-units = 1 # Reduce parallel code generation for better optimization
+panic = "abort"   # Remove heavy stack-unwinding code on panic
+strip = true      # Automatically strip symbols and debug info from the binary

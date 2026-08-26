@@ -1,0 +1,7 @@
+# Compiles for a 64bits machine
+# [target.x86_64-pc-windows-gnu]
+# image = "ghcr.io/cross-rs/x86_64-pc-windows-gnu:edge"
+
+# Compiles for a 32bits machine
+[target.i686-pc-windows-gnu]
+image = "ghcr.io/cross-rs/i686-pc-windows-gnu:edge"
